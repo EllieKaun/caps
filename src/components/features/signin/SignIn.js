@@ -80,7 +80,7 @@ export default function SignIn() {
 
     const handleAuth = () => {
         if(hadnleCheckAuthData()){
-            fetch('https://bilal312.pythonanywhere.com/api/register/', {
+            fetch('https://bilal312.pythonanywhere.com/api/login/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
