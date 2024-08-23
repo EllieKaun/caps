@@ -1,13 +1,13 @@
-import SignUp from "@/components/features/singup/SignUp";
-import SignIn from "@/components/features/signin/SignIn";
+import Header from "@/components/features/header/Header";
 import Products from "@/components/features/products/Products";
+import Profile from "@/components/features/profile/Profile";
 
 export default function Home() {
   return (
     <>
-      <SignUp />
-      <SignIn />
+      <Header />
       <Products />
+      <Profile />
     </>  
   );
 }

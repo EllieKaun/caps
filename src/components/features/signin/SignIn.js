@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from "react"
+import {  useState } from "react"
 import { Button, Input } from "antd"
 import CustomModal from "@/components/ui/modal"
 
@@ -32,6 +32,7 @@ export default function SignIn() {
     }
 
     const handleChange = (type, newValue) => {
+
         setAuthData((prev) => ({
                 ...prev, 
                 [type]:{ ...prev[type], value: newValue, error: false }
@@ -78,9 +79,9 @@ export default function SignIn() {
         return !errorArr.some((item) => item)
     }
 
-    const handleAuth = () => {
+const handleAuth = async () => {
         if(hadnleCheckAuthData()){
-            fetch('https://bilal312.pythonanywhere.com/api/login/', {
+            const result = await fetch('https://bilal312.pythonanywhere.com/api/login/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -88,6 +89,8 @@ export default function SignIn() {
                 body: JSON.stringify(postData),
                 }
             )
+            const data = await result.json()
+            localStorage.setItem('access', JSON.stringify(data.access))
         }
     }
 

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { Button, Input } from "antd"
 import CustomModal from "@/components/ui/modal"
 
-export default function SignIn() {
+export default function SignUp() {
     
     const [isOpen, setIsOpen] = useState(false)
 
@@ -93,7 +93,7 @@ export default function SignIn() {
 
     return(
         <>
-            <Button onClick={() => handleOpen()}>SignIn</Button>
+            <Button onClick={() => handleOpen()}>SignUp</Button>
             <CustomModal title={'Sign Up'} isOpen={isOpen} onCancel={handleClose} onOk={handleAuth}>
                 <div className="flex flex-col gap-[12px] mt-[36px]">
                     <Input status={authData.username.error ? 'error' : ''} placeholder="Username" onChange={(e) => {handleChange('username', e.target.value)}}/>
