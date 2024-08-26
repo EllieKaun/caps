@@ -91,13 +91,14 @@ const handleAuth = async () => {
             )
             const data = await result.json()
             localStorage.setItem('access', JSON.stringify(data.access))
+            handleClose()
         }
     }
 
     return(
         <>
             <Button onClick={() => handleOpen()}>SignIn</Button>
-            <CustomModal title={'Sign Up'} isOpen={isOpen} onCancel={handleClose} onOk={handleAuth}>
+            <CustomModal title={'Sign In'} isOpen={isOpen} onCancel={handleClose} onOk={handleAuth}>
                 <div className="flex flex-col gap-[12px] mt-[36px]">
                     <Input status={authData.username.error ? 'error' : ''} placeholder="Username" onChange={(e) => {handleChange('username', e.target.value)}}/>
                     <Input status={authData.phone_number.error ? 'error' : ''} placeholder="Phone number" onChange={(e) => {handleChange('phone_number', e.target.value)}}/>

@@ -1,11 +1,34 @@
 'use client'
-import SignIn from "../singup/SignUp"
 import SignUp from "../singup/SignUp"
+import SignIn from "../signin/SignIn"
+import { useStore } from "zustand"
+import { profileStore } from "@/stores/ProfileStore"
+import { useEffect } from "react"
 
 export default function Header(){
 
     const access = JSON.parse(localStorage.getItem('access'))
-    const username = (localStorage.getItem('username'))
+
+
+    const {profile, fetchProfile} = useStore(profileStore)
+
+    const data = { 
+        name: "John",
+        age: 21,
+        parents: {
+            name: "Tony",
+            age: 55
+        }
+    }
+
+    useEffect(() => {
+        fetchProfile(access)
+    }, [])
+
+    const data2 = JSON.parse(JSON.stringify(data)) // deep copy
+
+    data2.isBithday = false
+    data2.parents.isBithday = true
 
     return(
         <div>
@@ -14,7 +37,7 @@ export default function Header(){
                 <SignIn />
                 <SignUp />
             </div> :
-            <p>{username}</p>
+            <p>{profile?.username}</p>
             }
         </div>
     )
