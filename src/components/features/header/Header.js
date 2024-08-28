@@ -4,10 +4,11 @@ import SignIn from "../signin/SignIn"
 import { useStore } from "zustand"
 import { profileStore } from "@/stores/ProfileStore"
 import { useEffect } from "react"
+import Link from "next/link"
 
 export default function Header(){
 
-    const access = JSON.parse(localStorage.getItem('access'))
+    const access = localStorage.getItem('access') ? JSON.parse(localStorage.getItem('access')) : false
 
 
     const {profile, fetchProfile} = useStore(profileStore)
@@ -32,6 +33,7 @@ export default function Header(){
 
     return(
         <div>
+            <Link href="/kinopisk">Kinopisk</Link>
             {!access ? 
             <div>
                 <SignIn />
